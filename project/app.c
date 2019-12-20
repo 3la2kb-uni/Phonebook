@@ -26,7 +26,7 @@ if(!table_exists(name)){
 else{
 printf("1 > Add record\n2 > Select record\n3 > Modify record\n4 > Remove record\n____________________\n\n> ");
 scanf("%d",&choice_2);
-printf("%s",row(name,1));
+printf("%d",next_id(name));
 	}
 }
 

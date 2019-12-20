@@ -3,6 +3,13 @@
 #include <dirent.h>
 #include <assert.h>
 
+struct dates {
+            int year;
+            int month;
+            int day;
+};
+
+
 
 char* concat(const char *s1, const char *s2)
 {
@@ -115,7 +122,6 @@ if(table_exists(name)){
     char ch;
     int n = 0;
     char crlf = 10;
-    char comma = 44;
     fptr = fopen(concat("database/",name), "r");
     ch = fgetc(fptr);
 
@@ -132,3 +138,52 @@ if(table_exists(name)){
 }
 }
 
+char * column(char row[],char col[]){
+char comma = 44;
+
+if(col == "firstname"){return str_split(row,comma)[1];}
+else if(col == "lastname"){return str_split(row,comma)[2];}
+else if(col == "birth"){return str_split(row,comma)[3];}
+else if(col == "address"){return str_split(row,comma)[4];}
+else if(col == "email"){return str_split(row,comma)[5];}
+else if(col == "number"){return str_split(row,comma)[6];}
+else {return "Wrong column used";}
+
+}
+
+int next_id(char name[]){
+if(table_exists(name)){
+
+    FILE *fptr;
+    char ch;
+    int n = 0;
+    char crlf = 10;
+    fptr = fopen(concat("database/",name), "r");
+    ch = fgetc(fptr);
+
+    while (ch != EOF)
+
+    {
+	if(ch == crlf){
+        n++;
+	}
+        ch = fgetc(fptr);
+    }
+
+    fclose(fptr);
+    return n;
+
+}
+}
+
+struct to_date(char strDate[]){
+
+char dash = 45;
+struct dates date;
+date.year = str_split(strDate,dash)[0];
+date.month = str_split(strDate,dash)[1];
+date.day = str_split(strDate,dash)[2];
+
+return date;
+
+}
