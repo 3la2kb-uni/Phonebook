@@ -1,35 +1,17 @@
 #include <dirent.h>
-
+#include <stdlib.h>
 #include <stdio.h>
 
  
 
-int main(void)
+void main()
 
 {
+#ifdef __APPLE__
+    printf("You have Windows Operating System");
+#endif
 
-    DIR *d;
-
-    struct dirent *dir;
-
-    d = opendir(".");
-
-    if (d)
-
-    {
-
-        while ((dir = readdir(d)) != NULL)
-
-        {
-
-            printf("%s\n", dir->d_name);
-
-        }
-
-        closedir(d);
-
-    }
-
-    return(0);
-
+#ifdef __WIN32__
+    printf("You have Windows Operating System");
+#endif
 }

@@ -10,6 +10,9 @@ char* concat(const char *s1, const char *s2)
     return result;
 }
 
+
+
+
 int table_exists(char name[]){
 
 DIR *d;
@@ -28,10 +31,37 @@ if (d){
 
         closedir(d);
 	return 0;
-
+}
 }
 
 
 
+long int find_size(char file_name[]){
+    // opening the file in read mode
+    FILE* fp = fopen(concat("database/",file_name), "r");
+
+    // checking if the file exist or not
+    if (fp == NULL) {
+        return -1;
+    }
+
+    fseek(fp, 0L, SEEK_END);
+
+    // calculating the size of the file
+    long int res = ftell(fp);
+
+    // closing the file
+    fclose(fp);
+
+    return res;
+}
+
+
+
+int next_id(char name[]){
+if(table_exists(name)){
 
 }
+return 0;
+}
+
