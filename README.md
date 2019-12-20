@@ -1,3 +1,0 @@
-# Simple database (Phonebook)
-
-**WIP**
