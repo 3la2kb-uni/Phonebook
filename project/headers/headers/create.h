@@ -6,11 +6,32 @@
 
 int create_table(char name[]){
 
+DIR *d;
+struct dirent *dir;
+d = opendir("./database");
 FILE * fPtr;
 
-if(table_exists(name)){
-	printf("Table name already exists.\n\n");
-	return 0;
+if (d){
+        while ((dir = readdir(d)) != NULL)
+
+        {
+
+	if(!(strcmp(dir->d_name,name)))
+{
+
+		printf("Table name already exists.\n\n");
+		return 0;
+		}
+
+     }
+
+        closedir(d);
+
+
+
+
+
+
 }
 fPtr = fopen(concat("database/",name), "w");
 
