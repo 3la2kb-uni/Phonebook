@@ -1,6 +1,7 @@
 #include "headers/create.h"
 #include "headers/insert.h"
 #include "headers/delete.h"
+#include "headers/security.h"
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -43,12 +44,27 @@ printf("Last name : ");
 scanf("%s",lastname);
 printf("Date of birth (YYYY-MM-DD): ");
 scanf("%s",birth);
+while(!verify_date(birth)){
+printf("Invalid date !\n");
+printf("Date of birth (YYYY-MM-DD): ");
+scanf("%s",birth);
+}
 printf("Address : ");
 scanf("%s",address);
 printf("Email : ");
 scanf("%s",email);
+while(!verify_email(email)){
+printf("Wrong email !\n");
+printf("Email : ");
+scanf("%s",email);
+}
 printf("Phone number : ");
 scanf("%s",number);
+while(!verify_number(number)){
+printf("Wrong number !\n");
+printf("Phone number : ");
+scanf("%s",number);
+}
 insert(name,firstname,lastname,number,address,email,birth);
 printf("\n");
 main();
