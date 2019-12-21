@@ -3,10 +3,10 @@
 
 
 int insert(char table[],char firstname[],char lastname[],char phone_number[],char address[],char email[],char date[]) {
-    int id = next_id(table);
+//    int id = next_id(table);
     FILE *fptr;
     fptr = fopen(concat("database/",table),"a");
-    fprintf(fptr,"%d,%s,%s,%s,%s,%s,%s\n",id,firstname,lastname,phone_number,address,email,date);
+    fprintf(fptr,"%s,%s,%s,%s,%s,%s\n",firstname,lastname,phone_number,address,email,date);
     fclose(fptr);
     return 0;
 }

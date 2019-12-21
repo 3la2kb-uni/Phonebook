@@ -142,12 +142,12 @@ if(table_exists(name)){
 char * column(char row[],int col){
 char comma = 44;
 
-if(col == 1){return str_split(row,comma)[1];}
-else if(col == 2){return str_split(row,comma)[2];}
-else if(col == 3){return str_split(row,comma)[3];}
-else if(col == 4){return str_split(row,comma)[4];}
-else if(col == 5){return str_split(row,comma)[5];}
-else if(col == 6){return str_split(row,comma)[6];}
+if(col == 1){return str_split(row,comma)[0];}
+else if(col == 2){return str_split(row,comma)[1];}
+else if(col == 3){return str_split(row,comma)[2];}
+else if(col == 4){return str_split(row,comma)[3];}
+else if(col == 5){return str_split(row,comma)[4];}
+else if(col == 6){return str_split(row,comma)[5];}
 else {return "Wrong column used";}
 
 }

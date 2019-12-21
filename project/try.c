@@ -6,5 +6,5 @@
 
 int main() 
 { 
-printf(column(row("test",0),5));
+printf(column(row("haha",1),0));
 } 
