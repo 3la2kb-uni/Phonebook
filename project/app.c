@@ -1,5 +1,6 @@
 #include "headers/create.h"
 #include "headers/insert.h"
+#include "headers/delete.h"
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -32,10 +33,10 @@ if(choice_2 == 1){
 
         char firstname[15];
         char lastname[15];
-        char birth[10];
+        char birth[11];
         char address[40];
         char email[40];
-        char number[15];
+        char number[16];
 printf("First name : ");
 scanf("%s",firstname);
 printf("Last name : ");
@@ -51,8 +52,39 @@ scanf("%s",number);
 insert(name,firstname,lastname,number,address,email,birth);
 printf("\n");
 main();
-}}}
+}
+else if(choice_2 == 2){
+int line = 0;
+int choice_3;
+printf("Sort using :\n1 > First name\n2 > Last name\n3 > Address\n4 > Email\n5 > Phone number\n____________________\n\n> ");
+scanf("%d",&choice_3);
+char value[40];
+printf("Enter your search value : ");
+scanf("%s",&value);
+for(line;line < next_id(name);line++){
+if( !strcmp(column(row(name,line),choice_3),value))
+printf("%s\n",row(name,line));
+}
+}
 
+}
+
+
+}
+
+
+void third_choice(){
+	char del_name[20];
+	printf("Table name : ");
+	scanf("%s",del_name);
+	if(delete_table(del_name)){
+		printf("Table deleted successfully.\n");
+	}
+	else{
+		printf("Table couldn't be deleted.\n");
+	}
+	main();
+}
 
 
 int main(){
@@ -67,6 +99,10 @@ if(choice_1 == 1){
 else if(choice_1 == 2){
 	second_choice();
 	}
+else if(choice_1 == 3){
+        third_choice();
+        }
+
 return 0;
 }
 
