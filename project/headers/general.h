@@ -2,6 +2,7 @@
 #include <string.h>
 #include <dirent.h>
 #include <assert.h>
+#include <math.h>
 
 struct dates {
             int year;
@@ -155,34 +156,30 @@ int next_id(char name[]){
 if(table_exists(name)){
 
     FILE *fptr;
-    char ch;
-    int n = 0;
-    char crlf = 10;
+    int count = 0;
+    char c;
     fptr = fopen(concat("database/",name), "r");
-    ch = fgetc(fptr);
 
-    while (ch != EOF)
-
-    {
-	if(ch == crlf){
-        n++;
-	}
-        ch = fgetc(fptr);
-    }
-
+    for (c = getc(fptr); c != EOF; c = getc(fptr)) 
+        if (c == '\n') // Increment count if this character is newline 
+            count = count + 1; 
+  
+    // Close the file 
     fclose(fptr);
-    return n;
+    return count;
 
 }
 }
 
-struct to_date(char strDate[]){
+
+struct dates to_date(char strDate[]){
 
 char dash = 45;
 struct dates date;
-date.year = str_split(strDate,dash)[0];
-date.month = str_split(strDate,dash)[1];
-date.day = str_split(strDate,dash)[2];
+date.year = 1111;
+date.month = 12;
+//atoi(str_split(strDate,dash)[1]);
+date.day = 21;
 
 return date;
 
