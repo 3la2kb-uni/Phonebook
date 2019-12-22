@@ -72,8 +72,14 @@ main();
 else if(choice_2 == 2){
 int line = 0;
 int choice_3;
-printf("Sort using :\n1 > First name\n2 > Last name\n3 > Address\n4 > Email\n5 > Phone number\n____________________\n\n> ");
+printf("Search using :\n1 > First name\n2 > Last name\n3 > Address\n4 > Email\n5 > Phone number\n6 > Display all records\n____________________\n\n> ");
 scanf("%d",&choice_3);
+if(choice_3 == 6){
+	for(line;line < next_id(name);line++){
+	printf("%d,%s\n",line,row(name,line));
+	}
+
+}else{
 char value[40];
 printf("Enter your search value : ");
 scanf("%s",&value);
@@ -82,7 +88,7 @@ if( !strcmp(column(row(name,line),(choice_3)),value))
 printf("%s\n",row(name,line));
 }
 }
-
+}
 }
 
 

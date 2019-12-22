@@ -160,27 +160,14 @@ if(table_exists(name)){
     char c;
     fptr = fopen(concat("database/",name), "r");
 
-    for (c = getc(fptr); c != EOF; c = getc(fptr)) 
-        if (c == '\n') // Increment count if this character is newline 
-            count = count + 1; 
-  
-    // Close the file 
+    for (c = getc(fptr); c != EOF; c = getc(fptr))
+        if (c == '\n') // Increment count if this character is newline
+            count = count + 1;
+
+    // Close the file
     fclose(fptr);
     return count;
 
 }
 }
 
-
-struct dates to_date(char strDate[]){
-
-char dash = 45;
-struct dates date;
-date.year = 1111;
-date.month = 12;
-//atoi(str_split(strDate,dash)[1]);
-date.day = 21;
-
-return date;
-
-}
