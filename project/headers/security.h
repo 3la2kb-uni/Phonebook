@@ -1,38 +1,68 @@
-#include <regex.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 
-int print_result(int return_value){
-  if (return_value == 0){
-    return 1;
-  }
-  else if (return_value == REG_NOMATCH){
-    return 0;
-  }
-  else{
-    return -1;
-  }
-}
-
-
-int regex_match(char reg[],char text[]) {
-  regex_t regex;
-  int return_value;
-  return_value = regcomp(&regex,reg,0);
-  return_value = regexec(&regex, text, 0, NULL, 0);
-  return print_result(return_value);
-}
 
 int verify_number(char number[]){
-return regex_match("^01[[:digit:]]\\{9\\}$",number);
+int len = strlen(number);
+
+if(len>13){return 0;}
+
+
+else if(number[0] == '+' && len != 13 ){return 0;}
+
+
+else if(number[0] == '+' && len == 13){
+int i=1;
+for(i;i<len;i++){
+int ord = (int)number[i];
+if(ord < 48 || ord > 57 ){return 0;}
+}
+}
+
+
+else if(number[0] != '+' && len != 11){return 0;}
+
+else if(len == 11){
+int i=0;
+for(i;i<len;i++){
+int ord = (int)number[i];
+if(ord < 48 || ord > 57 ){return 0;}
+}
+}
+
+
+
+return 1;
 }
 
 int verify_email(char email[]){
-return regex_match("^[-.[:alnum:]]\\{1,\\}@[-.[:alnum:]]\\{1,\\}$",email);
+int len = strlen(email);
+if(len>40){return 0;}
+int i=0;
+for(i;i<len;i++){
+int ord = (int)email[i];
+if(ord < 43 || ord == 44 || ord == 47 || (ord > 57 && ord < 64) || (ord > 57 && ord < 64) || (ord > 90 && ord < 94) || (ord > 57 && ord < 64) || ord == 96 || ord > 122 ){return 0;}
+}
+return 1;
 }
 
 
 int verify_date(char date[]){
-return regex_match("^[[:digit:]]\\{4\\}-[01][[:digit:]]-[0123][[:digit:]]$",date);
+int len = strlen(date);
+if(len!=10){return 0;}
+else if(date[4] != '-' && date[7] != '-'){return 0;}
+int i=0;
+for(i;i<4;i++){
+int ord = (int)date[i];
+if(ord < 48 || ord > 57 ){return 0;}
 }
+if( ( (int)date[5] < 48 || (int)date[5] > 50 ) || ( (int)date[6] < 48 || (int)date[6] > 57 ) || ( (int)date[8] < 48 || (int)date[8] > 52 ) || ( (int)date[9] < 48 || (int)date[9] > 57 ) ){return 0;}
+
+return 1;
+
+
+}
+
+
+

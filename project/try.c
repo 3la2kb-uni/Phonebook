@@ -4,6 +4,13 @@
 #include <strings.h>
 #include "headers/general.h"
 
+void check(char name[]){
+int lines = next_id(name);
+int i=0;
+for(i;i<lines;i++)
+printf("%s\n", row(concat("database/",name),i) );
+}
+
 void main(){
-printf("%s",column(row("sort",2),4));
+check("sort");
 }

@@ -3,9 +3,9 @@
 #include "headers/delete.h"
 #include "headers/security.h"
 #include "headers/sort.h"
+#include "headers/remove.h"
 #include <stdlib.h>
 #include <stdio.h>
-
 
 int main();
 
@@ -99,6 +99,12 @@ if(choice_3 != 6){
 }
 
 	}
+else if(choice_2 == 4){
+int choice_3;
+printf("Number of row to be deleted :\n\n____________________\n\n> ");
+scanf("%d",&choice_3);
+delete_record(name,choice_3);
+}
 }
 
 
