@@ -4,6 +4,7 @@
 #include "headers/security.h"
 #include "headers/sort.h"
 #include "headers/remove.h"
+#include "headers/modify.h"
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -104,6 +105,18 @@ int choice_3;
 printf("Number of row to be deleted :\n\n____________________\n\n> ");
 scanf("%d",&choice_3);
 delete_record(name,choice_3);
+}
+else if(choice_2 == 3){
+int choice_3;
+char val[40];
+int field;
+printf("Which record do you want to edit (line number) : ");
+scanf("%d",&field);
+printf("Edit :\n1 > First name\n2 > Last name\n3 > Phone\n4 > Address\n5 > Email\n6 > Date\n____________________\n\n> ");
+scanf("%d",&choice_3);
+printf("Enter new value : ");
+scanf("%s",val);
+modify(name,field,val,choice_3);
 }
 }
 

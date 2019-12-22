@@ -8,9 +8,9 @@ void check(char name[]){
 int lines = next_id(name);
 int i=0;
 for(i;i<lines;i++)
-printf("%s\n", row(concat("database/",name),i) );
+printf("%s\n",row(name,i));
 }
 
 void main(){
-check("sort");
+check("tmp_copy");
 }
