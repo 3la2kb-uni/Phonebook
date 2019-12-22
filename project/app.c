@@ -2,6 +2,7 @@
 #include "headers/insert.h"
 #include "headers/delete.h"
 #include "headers/security.h"
+#include "headers/sort.h"
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -28,7 +29,7 @@ if(!table_exists(name)){
         main();
         }
 else{
-printf("1 > Add record\n2 > Select record\n3 > Modify record\n4 > Remove record\n____________________\n\n> ");
+printf("1 > Add record\n2 > Select record\n3 > Modify record\n4 > Remove record\n5 > Show sorted records\n____________________\n\n> ");
 scanf("%d",&choice_2);
 if(choice_2 == 1){
 
@@ -89,6 +90,15 @@ printf("%d,%s\n",line,row(name,line));
 }
 }
 }
+else if(choice_2 == 5){
+int choice_3;
+printf("Order by :\n1 > First name\n2 > Last name\n3 > Address\n4 > Email\n5 > Phone number\n____________________\n\n> ");
+scanf("%d",&choice_3);
+if(choice_3 != 6){
+	order(name,choice_3);
+}
+
+	}
 }
 
 

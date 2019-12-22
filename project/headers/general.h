@@ -224,12 +224,14 @@ void itoa(int value, char* str, int base) {
 
 
 char * ascii(char string[]){
+int slen = strlen(string);
+if(slen>6){slen=6;}
 int i = 0;
 int size = 0;
 int three = 3;
 int two = 2;
 int j;
-for(i;i<strlen(string);i++){
+for(i;i<slen;i++){
 if((int)string[i] < 100){
 	j = 0;
 	size += two;
@@ -239,10 +241,10 @@ else{
 	}
 }
 i=0;
-char *res = (char*)malloc(sizeof (char) * size);
+char *res = (char*)malloc(sizeof (char) * 18);
 int count = 0;
 char buffer[4];
-for(i;i<strlen(string);i++){
+for(i;i<slen;i++){
 if((int)string[i] < 100){
         j = 0;
         itoa((int)string[i],buffer,10);
@@ -262,6 +264,8 @@ else{
         }
 
 }
+int rem = 18-size;
+for(rem;rem<18;rem++){res[rem]='0';}
 return res;
 
 }
