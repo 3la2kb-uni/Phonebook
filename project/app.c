@@ -85,7 +85,7 @@ printf("Enter your search value : ");
 scanf("%s",&value);
 for(line;line < next_id(name);line++){
 if( !strcmp(column(row(name,line),(choice_3)),value))
-printf("%s\n",row(name,line));
+printf("%d,%s\n",line,row(name,line));
 }
 }
 }
