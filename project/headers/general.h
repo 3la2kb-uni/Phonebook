@@ -171,3 +171,99 @@ if(table_exists(name)){
 }
 }
 
+void strreverse(char* begin, char* end) {
+	
+	char aux;
+	
+	while(end>begin)
+	
+		aux=*end, *end--=*begin, *begin++=aux;
+	
+}
+	
+void itoa(int value, char* str, int base) {
+	
+	static char num[] = "0123456789abcdefghijklmnopqrstuvwxyz";
+	
+	char* wstr=str;
+	
+	int sign;
+	
+
+
+	
+	// Validate base
+	
+	if (base<2 || base>35){ *wstr='\0'; return; }
+	
+
+	
+	// Take care of sign
+	
+	if ((sign=value) < 0) value = -value;
+	
+
+
+	
+	// Conversion. Number is reversed.
+	
+	do *wstr++ = num[value%base]; while(value/=base);
+	
+	if(sign<0) *wstr++='-';
+	
+	*wstr='\0';
+	
+
+	
+	// Reverse string
+
+	
+	strreverse(str,wstr-1);
+	
+}
+
+
+char * ascii(char string[]){
+int i = 0;
+int size = 0;
+int three = 3;
+int two = 2;
+int j;
+for(i;i<strlen(string);i++){
+if((int)string[i] < 100){
+	j = 0;
+	size += two;
+	}
+else{
+	size += three;
+	}
+}
+i=0;
+char *res = (char*)malloc(sizeof (char) * size);
+int count = 0;
+char buffer[4];
+for(i;i<strlen(string);i++){
+if((int)string[i] < 100){
+        j = 0;
+        itoa((int)string[i],buffer,10);
+	for(j;j<two;j++){
+		res[count] = buffer[j];
+		count++;
+		}
+        }
+else{
+        j = 0;
+        itoa((int)string[i],buffer,10);
+        for(j;j<three;j++){ 
+                res[count] = buffer[j];
+		count++;
+                }
+
+        }
+
+}
+return res;
+
+}
+
+
