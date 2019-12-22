@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <strings.h>
 
 struct data_2{
 	char firstname[15];
@@ -16,19 +17,19 @@ create_table("tmpcopy");
 for(i;i<lines;i++){
 if(i == id){
 struct data_2 mod;
-mod.firstname = column(row(name,i),1);
-mod.lastname = column(row(name,i),2);
-mod.phone = column(row(name,i),3);
-mod.address = column(row(name,i),4);
-mod.email = column(row(name,i),5);
-mod.date = column(row(name,i),6);
-if(field == 1){mod.firstname == val;}
-else if(field == 2){mod.lastname == val;}
-else if(field == 3){mod.phone == val;}
-else if(field == 4){mod.address == val;}
-else if(field == 5){mod.email == val;}
-else if(field == 6){mod.date == val;}
-insert(name,mod.firstname,mod.lastname,mod.phone,mod.address,mod.email,mod.date);
+strcpy(mod.firstname, column(row(name,i),1));
+strcpy(mod.lastname , column(row(name,i),2));
+strcpy(mod.phone, column(row(name,i),3));
+strcpy(mod.address , column(row(name,i),4));
+strcpy(mod.email , column(row(name,i),5));
+strcpy(mod.date , column(row(name,i),6));
+if(field == 1){strcpy(mod.firstname, val);}
+else if(field == 2){strcpy(mod.lastname , val);}
+else if(field == 3){strcpy(mod.phone , val);}
+else if(field == 4){strcpy(mod.address , val);}
+else if(field == 5){strcpy(mod.email , val);}
+else if(field == 6){strcpy(mod.date , val);}
+insert("tmpcopy",mod.firstname,mod.lastname,mod.phone,mod.address,mod.email,mod.date);
 }
 else{
     FILE *fptr;
