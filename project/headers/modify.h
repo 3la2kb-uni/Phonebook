@@ -10,6 +10,8 @@ struct data_2{
 	char email[40];
 	char date[11];
 };
+
+
 void modify(char name[],int id,char val[],int field){
 int lines = next_id(name);
 int i=0;

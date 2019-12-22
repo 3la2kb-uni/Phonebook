@@ -180,7 +180,7 @@ void strreverse(char* begin, char* end) {
 		aux=*end, *end--=*begin, *begin++=aux;
 	
 }
-	
+/*	
 void itoa(int value, char* str, int base) {
 	
 	static char num[] = "0123456789abcdefghijklmnopqrstuvwxyz";
@@ -221,7 +221,7 @@ void itoa(int value, char* str, int base) {
 	strreverse(str,wstr-1);
 	
 }
-
+*/
 
 char * ascii(char string[]){
 int slen = strlen(string);
